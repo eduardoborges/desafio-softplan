@@ -17,11 +17,20 @@ const CharactersScreen: React.FunctionComponent<Props> = props => (
       <div className="columns">
         <div className="column">
 
-          <h1 className="title">Tony Stark</h1>
+          <h1 className="title">Personagens</h1>
         </div>
 
         <div className="column">
-          <div className="button is-primary">Editar</div>
+          <div className="field has-addons">
+            <div className="control is-expanded">
+              <input className="input is-medium" type="text" placeholder="Encontre um personagem" />
+            </div>
+            <div className="control">
+              <a className="button is-medium">
+                Search
+              </a>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -29,7 +38,7 @@ const CharactersScreen: React.FunctionComponent<Props> = props => (
       <div className="columns is-multiline">
         {Array.from(new Array(25)).map((v, i) => (
           <div className="column is-4">
-            <Link to="/character/1">
+            <Link to="/characters/1">
 
               <div className="card">
                 <div className="card-image">
