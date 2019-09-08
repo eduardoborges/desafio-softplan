@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/img-redundant-alt */
@@ -6,6 +7,7 @@ import { RouteComponentProps, Link } from '@reach/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from 'store/types';
 import { slugfy } from 'helpers';
+import dayjs from 'dayjs';
 
 interface OwnProps {
   slug?: string,
@@ -34,12 +36,56 @@ const CharactersScreen: React.FC<Props> = (props) => {
             </div>
 
             <div className="columns is-multiline">
-              <div className="column">
-                <div className="content">
-                  <h2>Teste</h2>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga doloribus cumque error necessitatibus possimus doloremque culpa quibusdam suscipit alias saepe eveniet, optio pariatur expedita aut magni ducimus praesentium adipisci dolor voluptatem aliquid, quod aliquam? Explicabo, voluptate quidem dolores velit quos laboriosam deserunt perferendis mollitia reprehenderit obcaecati consequuntur tenetur voluptas perspiciatis incidunt in quas! Asperiores quos totam nostrum doloribus numquam optio officiis esse error in tempore dolor pariatur, ex facere aperiam. In sed ratione explicabo laborum, inventore facilis quisquam, reiciendis nam blanditiis nemo aut labore? Perspiciatis, magni numquam in voluptatibus eveniet accusamus quam quaerat, quod a repudiandae ullam corporis molestiae non, ad dicta quas voluptatum illum sit! Rerum dolorum, possimus eaque illo natus repellat doloribus officia quibusdam earum debitis modi quod laborum facilis omnis accusamus unde culpa voluptatibus quas architecto aliquid pariatur quisquam. Consequatur, voluptatem asperiores. Commodi aperiam, eum corrupti aliquam soluta modi maiores eligendi pariatur quibusdam sapiente error delectus voluptate praesentium, recusandae facilis animi illum laborum atque voluptatibus deleniti provident ab. Quos expedita cupiditate alias earum, minima aliquid totam impedit quaerat, illo quis temporibus repudiandae nihil. Ullam ab dignissimos laborum obcaecati omnis quae, praesentium esse quod voluptatem tempore ipsa aut molestiae facere repellendus? Modi nulla asperiores ipsum magnam nam quaerat culpa? Tempore, deleniti saepe incidunt ipsam et id voluptatum earum porro doloremque accusamus, est quos necessitatibus non modi minima. Possimus, quidem ex! Libero quae natus sunt veniam, dignissimos non distinctio? Deleniti dignissimos impedit assumenda veniam alias. Eius alias hic voluptates provident iste, adipisci consectetur voluptatibus fugit. Expedita maxime in ab deleniti sed aspernatur mollitia iure quisquam natus voluptatem quod quaerat laboriosam saepe iusto, doloremque suscipit earum labore ut sequi eum atque optio neque! Veniam magnam eius commodi. Delectus quia temporibus mollitia modi, quibusdam maxime error neque facilis aut corporis enim impedit ratione blanditiis, veritatis unde assumenda voluptate repellendus ab ipsam.</p>
-                </div>
+
+              <div className="column is-3">
+                <span className="label">Data de criação</span>
+                <span>{dayjs(details.created).format('DD/MM/YYYY [às] hh:mm:ss')}</span>
+                <hr />
               </div>
+
+              <div className="column is-3">
+                <span className="label">Nascimento (anos estelares)</span>
+                <span>{details.birth_year}</span>
+                <hr />
+              </div>
+
+              <div className="column is-3">
+                <span className="label">Altura</span>
+                <span>{details.height} cm</span>
+                <hr />
+              </div>
+
+              <div className="column is-3">
+                <span className="label">Peso</span>
+                <span>{details.mass} kgs</span>
+                <hr />
+              </div>
+
+              <div className="column is-3">
+                <span className="label">Olhos</span>
+                <span>{details.eye_color}</span>
+                <hr />
+              </div>
+
+              <div className="column is-3">
+                <span className="label">Cabelo</span>
+                <span>{details.hair_color}</span>
+                <hr />
+              </div>
+
+              <div className="column is-3">
+                <span className="label">Pele</span>
+                <span>{details.skin_color}</span>
+                <hr />
+              </div>
+
+              <div className="column is-3">
+                <span className="label">Gênero</span>
+                <span>{details.gender === 'female' ? 'Mulher/fêmea' : 'Homem/Macho'}</span>
+                <hr />
+              </div>
+
+
             </div>
           </>
         ) : <h1 className="title">Not found</h1> }
