@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable max-len */
 import React from 'react';
-import { RouteComponentProps, Link, navigate } from '@reach/router';
+import { RouteComponentProps, navigate } from '@reach/router';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Form, Input, Select,
@@ -19,7 +20,7 @@ interface OwnProps {
 type Props = RouteComponentProps & OwnProps;
 
 const CharactersScreen: React.FC<Props> = (props) => {
-  const details = useSelector((state: AppState) => state.CHARACTERS.data.find(p => slugfy(p.name) === slugfy(props ? props.slug : '')));
+  const details = useSelector(({ CHARACTERS: { data } }: AppState) => data.find(p => slugfy(p.name) === slugfy(props ? props.slug : '')));
   const dispatch = useDispatch();
 
   const onSubmit = (form:any) => {

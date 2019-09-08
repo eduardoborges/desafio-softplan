@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react';
 import { RouteComponentProps, Link } from '@reach/router';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { AppState } from 'store/types';
 import { slugfy } from 'helpers';
 import dayjs from 'dayjs';
