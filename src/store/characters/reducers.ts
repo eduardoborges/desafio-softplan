@@ -20,8 +20,8 @@ const reducer: Reducer<State> = (state = INITIAL_STATE, action) => {
     case Types.INDEX_SUCCESS:
       return {
         ...state,
-        data: [...action.payload.results],
-        next: action.payload.next,
+        data: [...state.data, ...action.payload.results],
+        page: state.page + 1,
         loading: false,
         error: false,
       };
