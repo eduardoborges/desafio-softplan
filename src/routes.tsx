@@ -8,6 +8,7 @@ import { Navbar } from 'components';
 // screens
 import Characters from 'screens/characters';
 import CharactersDetails from 'screens/characters-details';
+import CharactersEdit from 'screens/characters-edit';
 
 export default () => (
   <>
@@ -15,7 +16,9 @@ export default () => (
     <Router>
       <Redirect from="/" to="/characters" />
       <Characters path="/characters" />
-      <CharactersDetails path="/characters/:slug" />
+      <CharactersDetails path="/characters/:slug">
+        <CharactersEdit path="edit" />
+      </CharactersDetails>
     </Router>
   </>
 );

@@ -16,84 +16,87 @@ interface OwnProps {
 type Props = RouteComponentProps & OwnProps;
 
 const CharactersScreen: React.FC<Props> = (props) => {
-  const dispatch = useDispatch();
-  const details = useSelector((state : AppState) => state.CHARACTERS.data.find(p => slugfy(p.name) === slugfy(props ? props.slug : '')));
+  const details = useSelector((state: AppState) => state.CHARACTERS.data.find(p => slugfy(p.name) === slugfy(props ? props.slug : '')));
+  const { children } = props;
   return (
-    <div className="section">
-      <div className="container">
+    <>
+      {children}
+      <div className="section">
+        <div className="container">
 
-        { details ? (
-          <>
-            <div className="columns">
-              <div className="column">
-                <h1 className="title">
-                  {details.name}
-                  {' '}
-                  <Link to="/characters/1/edit" className="button is-small is-text">Editar</Link>
-                  {' '}
-                </h1>
-              </div>
-            </div>
-
-            <div className="columns is-multiline">
-
-              <div className="column is-3">
-                <span className="label">Data de criação</span>
-                <span>{dayjs(details.created).format('DD/MM/YYYY [às] hh:mm:ss')}</span>
-                <hr />
+          {details ? (
+            <>
+              <div className="columns">
+                <div className="column">
+                  <h1 className="title">
+                    {details.name}
+                    {' '}
+                    <Link to={`/characters/${slugfy(details.name)}/edit`} className="button is-small is-text">Editar</Link>
+                    {' '}
+                  </h1>
+                </div>
               </div>
 
-              <div className="column is-3">
-                <span className="label">Nascimento (anos estelares)</span>
-                <span>{details.birth_year}</span>
-                <hr />
+              <div className="columns is-multiline">
+
+                <div className="column is-3">
+                  <span className="label">Data de criação</span>
+                  <span>{dayjs(details.created).format('DD/MM/YYYY [às] hh:mm:ss')}</span>
+                  <hr />
+                </div>
+
+                <div className="column is-3">
+                  <span className="label">Nascimento (anos estelares)</span>
+                  <span>{details.birth_year}</span>
+                  <hr />
+                </div>
+
+                <div className="column is-3">
+                  <span className="label">Altura</span>
+                  <span>{details.height} cm</span>
+                  <hr />
+                </div>
+
+                <div className="column is-3">
+                  <span className="label">Peso</span>
+                  <span>{details.mass} kgs</span>
+                  <hr />
+                </div>
+
+                <div className="column is-3">
+                  <span className="label">Olhos</span>
+                  <span>{details.eye_color}</span>
+                  <hr />
+                </div>
+
+                <div className="column is-3">
+                  <span className="label">Cabelo</span>
+                  <span>{details.hair_color}</span>
+                  <hr />
+                </div>
+
+                <div className="column is-3">
+                  <span className="label">Pele</span>
+                  <span>{details.skin_color}</span>
+                  <hr />
+                </div>
+
+                <div className="column is-3">
+                  <span className="label">Gênero</span>
+                  <span>{details.gender === 'female' ? 'Mulher/fêmea' : 'Homem/Macho'}</span>
+                  <hr />
+                </div>
+
+
               </div>
-
-              <div className="column is-3">
-                <span className="label">Altura</span>
-                <span>{details.height} cm</span>
-                <hr />
-              </div>
-
-              <div className="column is-3">
-                <span className="label">Peso</span>
-                <span>{details.mass} kgs</span>
-                <hr />
-              </div>
-
-              <div className="column is-3">
-                <span className="label">Olhos</span>
-                <span>{details.eye_color}</span>
-                <hr />
-              </div>
-
-              <div className="column is-3">
-                <span className="label">Cabelo</span>
-                <span>{details.hair_color}</span>
-                <hr />
-              </div>
-
-              <div className="column is-3">
-                <span className="label">Pele</span>
-                <span>{details.skin_color}</span>
-                <hr />
-              </div>
-
-              <div className="column is-3">
-                <span className="label">Gênero</span>
-                <span>{details.gender === 'female' ? 'Mulher/fêmea' : 'Homem/Macho'}</span>
-                <hr />
-              </div>
+            </>
+          ) : <h1 className="title">Not found</h1>}
 
 
-            </div>
-          </>
-        ) : <h1 className="title">Not found</h1> }
-
-
+        </div>
       </div>
-    </div>
-);
+    </>
+  );
 };
 
 export default CharactersScreen;
