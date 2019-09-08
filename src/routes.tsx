@@ -15,7 +15,7 @@ export default () => (
     <Router>
       <Redirect from="/" to="/characters" />
       <Characters path="/characters" />
-      <CharactersDetails path="/characters/:id" />
+      <CharactersDetails path="/characters/:slug" />
     </Router>
   </>
 );

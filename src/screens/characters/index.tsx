@@ -9,6 +9,7 @@ import { RouteComponentProps, Link } from '@reach/router';
 import { AppState } from 'store/types';
 import { indexRequest } from 'store/characters/actions';
 import debouce from 'lodash.debounce';
+import { slugfy } from 'helpers';
 
 
 interface OwnProps {
@@ -65,7 +66,7 @@ const CharactersScreen: React.FunctionComponent<Props> = (props) => {
         <div className="columns is-multiline">
           {characters.data.map(c => (
             <div className="column is-4" key={c.name}>
-              <Link to="/characters/1">
+              <Link to={`/characters/${slugfy(c.name)}`}>
                 <div className="card">
                   <div className="card-image">
                     <figure className="image is-4by3">
