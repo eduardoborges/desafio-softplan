@@ -1,10 +1,19 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import * as React from 'react';
 import { Router } from '@reach/router';
 
-import Welcome from './screens/welcome';
+// components
+import { Navbar } from 'components';
+
+// screens
+import Characters from 'screens/characters';
+import Welcome from 'screens/welcome';
 
 export default () => (
-  <Router>
-    <Welcome path="/" />
-  </Router>
+  <>
+    <Navbar />
+    <Router>
+      <Characters path="/" />
+    </Router>
+  </>
 );
