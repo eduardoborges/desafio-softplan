@@ -19,7 +19,7 @@ interface Action {
 
 export function* _indexRequest(action:Action) {
   try {
-    const page = select((state:AppState) => state.CHARACTERS.page);
+    const { page } = yield select((state:AppState) => state.CHARACTERS);
     const resp : AxiosResponse = yield call(api.get, `people?page=${page}`);
     yield put(indexSuccess(resp.data));
   } catch (e) {
