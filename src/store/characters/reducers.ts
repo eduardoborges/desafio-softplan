@@ -1,4 +1,5 @@
 import { Reducer } from 'redux';
+import { slugfy } from 'helpers';
 import { CharactersTypes as Types, CharactersState as State } from './types';
 
 const INITIAL_STATE : State = {
@@ -29,6 +30,16 @@ const reducer: Reducer<State> = (state = INITIAL_STATE, action) => {
     case Types.INDEX_ERROR:
       return {
         ...state, loading: false, error: true,
+      };
+
+    case Types.UPDATE:
+      return {
+        ...state,
+        data: state.data.map(char => (
+          slugfy(char.name) === slugfy(action.payload.name)
+          ? { ...char, ...action.payload }
+          : char
+        )),
       };
 
     default:

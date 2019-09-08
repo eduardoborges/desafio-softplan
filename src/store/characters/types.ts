@@ -3,6 +3,7 @@ export enum CharactersTypes {
   INDEX_REQUEST = '@chars/INDEX_REQUEST',
   INDEX_SUCCESS = '@chars/INDEX_SUCCESS',
   INDEX_ERROR = '@chars/INDEX_ERROR',
+  UPDATE = '@chars/UPDATE',
 }
 
 export interface Character {
