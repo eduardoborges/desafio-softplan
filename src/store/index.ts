@@ -7,9 +7,11 @@ import thunk from 'redux-thunk';
 import rootReducers from './rootReducers';
 import rootSagas from './rootSagas';
 import { TodoState } from './todos/types';
+import { CharactersState } from './characters/types';
 
 export interface AppState {
   TODOS: TodoState,
+  CHARACTERS: CharactersState,
 }
 const sagaMiddleware = createSagaMiddleware();
 
