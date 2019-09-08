@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 import axios from 'axios';
 
+
 const api = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com/',
+  baseURL: 'https://cors-anywhere.herokuapp.com/https://swapi.co/api',
 });
 
 // request interceptor
