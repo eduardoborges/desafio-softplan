@@ -3,8 +3,9 @@
 import { api } from 'services';
 import { AxiosResponse } from 'axios';
 import {
- call, put, takeLatest,
+ call, put, takeLatest, select,
 } from 'redux-saga/effects';
+import { AppState } from 'store/types';
 import {
  indexSuccess, indexError,
 } from './actions';
@@ -18,7 +19,8 @@ interface Action {
 
 export function* _indexRequest(action:Action) {
   try {
-    const resp : AxiosResponse = yield call(api.get, 'people');
+    const page = select((state:AppState) => state.CHARACTERS.page);
+    const resp : AxiosResponse = yield call(api.get, `people?page=${page}`);
     yield put(indexSuccess(resp.data));
   } catch (e) {
     yield put(indexError());

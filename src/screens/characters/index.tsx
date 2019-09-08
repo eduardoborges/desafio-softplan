@@ -1,11 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RouteComponentProps, Link } from '@reach/router';
-import { AppState } from 'store';
+import { AppState } from 'store/types';
 import { indexRequest } from 'store/characters/actions';
 import debouce from 'lodash.debounce';
 
@@ -20,6 +21,7 @@ const CharactersScreen: React.FunctionComponent<Props> = (props) => {
   const characters = useSelector((state:AppState) => state.CHARACTERS);
   const dispatch = useDispatch();
 
+  const [isEndedScroll, setEndedScroll] = useState(false);
 
   const isEndScroll = () => {
     const position = window.innerHeight + document.documentElement.scrollTop;
@@ -29,7 +31,7 @@ const CharactersScreen: React.FunctionComponent<Props> = (props) => {
 
   useEffect(() => {
     dispatch(indexRequest());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="section">
@@ -93,7 +95,7 @@ const CharactersScreen: React.FunctionComponent<Props> = (props) => {
 
         <div className="columns">
           <div className="column">
-            <button type="button" className="button is-fullwidth">Carregar mais</button>
+            <button type="button" className="button is-fullwidth" onClick={() => dispatch(indexRequest())}>Carregar mais</button>
             <div className="title has-text-centered has-text-grey">{characters.loading ? 'Carregando...' : '•'}</div>
           </div>
         </div>

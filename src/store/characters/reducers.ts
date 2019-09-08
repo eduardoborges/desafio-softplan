@@ -5,7 +5,7 @@ const INITIAL_STATE : State = {
   data: [],
   loading: false,
   error: false,
-  next: null,
+  page: 1,
 };
 
 

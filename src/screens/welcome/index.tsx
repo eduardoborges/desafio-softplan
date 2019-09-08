@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppState } from 'store';
+import { AppState } from 'store/types';
 import { indexRequest, addRequest, removeRequest } from 'store/todos/actions';
 
 interface OwnProps {

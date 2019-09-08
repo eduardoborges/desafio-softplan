@@ -28,7 +28,7 @@ export interface CharactersState {
   data: Character[],
   loading: boolean,
   error: boolean,
-  next: string | null,
+  page: number,
 }
 
 export interface ResponseCharacters {
