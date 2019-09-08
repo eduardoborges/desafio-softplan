@@ -9,7 +9,7 @@ import { RouteComponentProps, Link } from '@reach/router';
 import { AppState } from 'store/types';
 import { indexRequest } from 'store/characters/actions';
 import debouce from 'lodash.debounce';
-import { slugfy } from 'helpers';
+import { slugfy, searchList } from 'helpers';
 
 
 interface OwnProps {
@@ -21,6 +21,8 @@ type Props = OwnProps & RouteComponentProps;
 const CharactersScreen: React.FunctionComponent<Props> = (props) => {
   const characters = useSelector((state:AppState) => state.CHARACTERS);
   const dispatch = useDispatch();
+
+  const [search, setSearch] = useState<string>('');
 
   const [isEndedScroll, setEndedScroll] = useState(false);
 
@@ -51,12 +53,12 @@ const CharactersScreen: React.FunctionComponent<Props> = (props) => {
           <div className="column">
             <div className="field has-addons">
               <div className="control is-expanded">
-                <input className="input is-medium" type="text" placeholder="Encontre um personagem" />
+                <input className="input is-medium" onChange={({ target }) => setSearch(target.value)} type="text" placeholder="Encontre um personagem" />
               </div>
               <div className="control">
-                <a className="button is-medium">
+                <button type="button" className="button is-medium">
                   Search
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -64,7 +66,7 @@ const CharactersScreen: React.FunctionComponent<Props> = (props) => {
         </div>
 
         <div className="columns is-multiline">
-          {characters.data.map(c => (
+          {searchList(characters.data, 'name', search).map(c => (
             <div className="column is-4" key={c.name}>
               <Link to={`/characters/${slugfy(c.name)}`}>
                 <div className="card">
@@ -96,8 +98,7 @@ const CharactersScreen: React.FunctionComponent<Props> = (props) => {
 
         <div className="columns">
           <div className="column">
-            <button type="button" className="button is-fullwidth" onClick={() => dispatch(indexRequest())}>Carregar mais</button>
-            <div className="title has-text-centered has-text-grey">{characters.loading ? 'Carregando...' : '•'}</div>
+            <button type="button" className={`button is-fullwidth ${characters.loading && 'is-loading'}`} onClick={() => dispatch(indexRequest())}>Carregar mais</button>
           </div>
         </div>
 

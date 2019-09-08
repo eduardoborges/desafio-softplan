@@ -18,3 +18,13 @@ export const slugfy = (str:string = '') => str.toLowerCase()
 .replace(/\-\-+/g, '-') // Replace multiple - with single -
 .replace(/^-+/, '') // Trim - from start of text
 .replace(/-+$/, '');
+
+
+export function searchList<T>(arr: T[], fieldName:string = 'name', searchForString:string = '') : T[] {
+  return arr.filter((item:T) => {
+    let field = fieldName;
+    // @ts-ignore
+    field = item[field] ? item[field] : '';
+    return field.search(new RegExp(searchForString, 'i')) === -1 ? false : item;
+  });
+}
