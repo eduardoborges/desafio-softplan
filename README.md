@@ -4,7 +4,6 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" width="200" />
 
 # Desafio Softplan 👋
-![Version](https://img.shields.io/badge/version-3.3.0-blue.svg?cacheSeconds=2592000)
 ![Tests](https://travis-ci.org/eduardoborges/desafio-softplan.svg?branch=master)
 [![Twitter: euduardoborges](https://img.shields.io/twitter/follow/euduardoborges.svg?style=social)](https://twitter.com/euduardoborges)
 
