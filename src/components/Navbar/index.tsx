@@ -24,7 +24,7 @@ const Navbar : React.FC<Props> = props => (
 
       <div className="navbar-menu">
         <div className="navbar-end">
-          <Link to="/" className="navbar-item">
+          <Link to="/characters" className="navbar-item">
             <span>Personagens</span>
           </Link>
         </div>
